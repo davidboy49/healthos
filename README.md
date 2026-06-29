@@ -40,3 +40,6 @@ Garmin API
 
 AI outputs are required to cite stored metrics or source records. The platform is for wellness and performance guidance, not diagnosis or treatment.
 
+## FitnessSyncer Imports
+
+Garmin API access is optional. The current preferred automation path is FitnessSyncer CSV export plus n8n. See docs/n8n/fitnesssyncer-import.md and samples/fitnesssyncer_mock.csv.

@@ -12,4 +12,6 @@ coverage/
 *.log
 postgres-data/
 redis-data/
-
+data/imports/*
+!data/imports/.gitkeep
+pytest-cache-files-*/

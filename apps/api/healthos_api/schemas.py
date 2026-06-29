@@ -145,3 +145,21 @@ class JobStatus(BaseModel):
     last_heartbeat: datetime
     scheduled_jobs: list[str]
 
+
+
+class ImportBatchResponse(BaseModel):
+    id: UUID
+    source: str
+    original_filename: str
+    stored_path: str | None
+    status: str
+    total_rows: int
+    processed_rows: int
+    skipped_rows: int
+    errors: list[dict]
+    created_at: datetime
+    completed_at: datetime | None
+
+
+class LocalImportRequest(BaseModel):
+    path: str

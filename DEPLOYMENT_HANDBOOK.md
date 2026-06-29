@@ -95,4 +95,16 @@ If any of these are missing, the agent should stop and report clearly:
 ## Good Operating Rule
 
 If deployment succeeds but Garmin sync is not yet connected, the app is still usable as a dashboard and data model shell. Do not treat that as failure; report it as the next integration step.
+## FitnessSyncer + n8n Path
 
+Garmin official API access is not required for the first usable ingestion path.
+
+Preferred flow:
+
+```text
+Garmin Connect -> FitnessSyncer CSV export -> VPS data/imports -> n8n -> HealthOS /imports/fitnesssyncer/local
+```
+
+Read `docs/n8n/fitnesssyncer-import.md` before wiring automation.
+
+Use `samples/fitnesssyncer_mock.csv` to test the importer before real data is available.

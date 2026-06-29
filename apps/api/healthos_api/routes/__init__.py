@@ -1,4 +1,4 @@
-﻿from healthos_api.routes import activities, admin, auth, experiments, garmin, health, insights, manual_events, metrics, recommendations
+from healthos_api.routes import activities, admin, auth, experiments, garmin, health, imports, insights, manual_events, metrics, recommendations
 
 __all__ = [
     "activities",
@@ -7,6 +7,7 @@ __all__ = [
     "experiments",
     "garmin",
     "health",
+    "imports",
     "insights",
     "manual_events",
     "metrics",

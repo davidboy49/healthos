@@ -60,4 +60,11 @@ docker compose ps
 - Migration/build errors
 
 If something is missing, report the exact blocker and do not guess.
+## Current ingestion priority
 
+Use FitnessSyncer + n8n before Garmin official API.
+
+- Put CSV files in `data/imports` on the VPS.
+- Call `POST /imports/fitnesssyncer/local` with the filename.
+- Read `docs/n8n/fitnesssyncer-import.md`.
+- Test with `samples/fitnesssyncer_mock.csv` first.

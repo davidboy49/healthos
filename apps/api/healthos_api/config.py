@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     garmin_auth_url: str = "https://connect.garmin.com/oauthConfirm"
     garmin_token_url: str = "https://connect.garmin.com/oauth-service/oauth/access_token"
     garmin_api_base_url: str = "https://apis.garmin.com/wellness-api/rest"
+    import_storage_dir: str = "data/imports"
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")

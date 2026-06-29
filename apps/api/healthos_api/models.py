@@ -1,4 +1,4 @@
-﻿import enum
+import enum
 import uuid
 from datetime import date, datetime
 
@@ -238,3 +238,19 @@ class Experiment(Base):
 Index("ix_metrics_user_name_window", DerivedMetric.user_id, DerivedMetric.name, DerivedMetric.window_start, DerivedMetric.window_end)
 
 
+
+class ImportBatch(Base):
+    __tablename__ = "import_batches"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    source: Mapped[str] = mapped_column(String(80), index=True)
+    original_filename: Mapped[str] = mapped_column(String(255))
+    stored_path: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(40), default="received", index=True)
+    total_rows: Mapped[int] = mapped_column(Integer, default=0)
+    processed_rows: Mapped[int] = mapped_column(Integer, default=0)
+    skipped_rows: Mapped[int] = mapped_column(Integer, default=0)
+    errors: Mapped[list[dict]] = mapped_column(JSON, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

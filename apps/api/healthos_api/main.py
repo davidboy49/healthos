@@ -1,9 +1,9 @@
-﻿from fastapi import FastAPI, Depends
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from healthos_api.config import get_settings
 from healthos_api.models import User
-from healthos_api.routes import activities, admin, auth, experiments, garmin, health, insights, manual_events, metrics, recommendations
+from healthos_api.routes import activities, admin, auth, experiments, garmin, health, imports, insights, manual_events, metrics, recommendations
 from healthos_api.schemas import MeResponse
 from healthos_api.security import get_current_user
 
@@ -24,6 +24,7 @@ app.include_router(health.router)
 app.include_router(metrics.router)
 app.include_router(activities.router)
 app.include_router(insights.router)
+app.include_router(imports.router)
 app.include_router(recommendations.router)
 app.include_router(manual_events.router)
 app.include_router(experiments.router)
